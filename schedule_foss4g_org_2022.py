@@ -14,7 +14,7 @@ from voc.tools import load_json, write
 from voc import rc3hub
 
 
-tz = pytz.timezone('Europe/Amsterdam')
+tz = pytz.timezone('Europe/Rome')
 
 parser = optparse.OptionParser()
 parser.add_option('--online', action='store_true', dest='online', default=False)
@@ -34,8 +34,17 @@ only_workshops = False
 #    .get('https://c3voc.de/wiki/lib/exe/graphql2.php?query={channels{nodes{name:slug,url:schedule_url,schedule_room,room_guid,prefix}}}') \
 #    .json()['data']['channels']['nodes']
 
-xc3 = 'rC3_21'
+xc3 = 'foss4g2022'
+main_schedule_url = 'https://talks.osgeo.org/foss4g-2022/schedule/export/schedule.json'
 channels = [
+    {
+        'url': 'https://talks.osgeo.org/foss4g-2022-workshops/schedule/export/schedule.json',
+        'name': 'Workshops'
+    },
+    {
+        'url': 'https://talks.osgeo.org/foss4g-2022-academic-track/schedule/export/schedule.json',
+        'name': 'Academic',
+    },
 ]
 
 additional_schedule_urls = channels
@@ -47,6 +56,8 @@ targets = [
 ]
 
 id_offsets = {
+    "Workshops": 5000,
+    "Academic": 2000
 }
 
 
@@ -85,15 +96,14 @@ os.chdir(output_dir)
 
 
 def main():
-    #try:
-    #    full_schedule = Schedule.from_url(main_schedule_url)
-    #    print('  version: ' + full_schedule.version())
-    #    #print('  contains {events_count} events, with local ids from {min_id} to {max_id}'.format(**full_schedule.stats.__dict__))
-    #except:
-    full_schedule = Schedule.from_XC3_template(None, 38, 27, 4)
+    full_schedule = Schedule.from_url(main_schedule_url)
+    print('  version: ' + full_schedule.version())
+    # print('  contains {events_count} events, with local ids from {min_id} to {max_id}'.format(**full_schedule.stats.__dict__))
+    # full_schedule = Schedule.from_XC3_template(None, 38, 27, 4)
     conference = full_schedule.conference()
-    conference['acronym'] = 'rc3-2021'
-    conference['title'] = 'rC3 NOWHERE'
+    conference['acronym'] = 'foss4g-2022'
+    conference['title'] = 'FOSS4G 2022'
+    conference['time_zone_name'] = 'Europe/Rome'
 
     loaded_schedules = {}
 

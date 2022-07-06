@@ -232,7 +232,7 @@ class Schedule:
                     ("end", "{}-{:02d}-{:02d}".format(year, month, day + days_count - 1)),
                     ("daysCount", days_count),
                     ("timeslot_duration", "00:15"),
-                    ("time_zone_name", "Europe/Amsterdam"),
+                    ("time_zone_name", "Europe/Rome"),
                     ("rooms", []),
                     ("days", [])
                 ]))
