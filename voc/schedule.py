@@ -437,8 +437,8 @@ class Schedule:
         raise Warning("  illegal start time: " + start_time.isoformat())
 
     def export(self, prefix):
-        with open("{}.schedule.json".format(prefix), "w") as fp:
-            json.dump(self._schedule, fp, indent=2, cls=ScheduleEncoder)
+        # with open("{}.schedule.json".format(prefix), "w") as fp:
+        #     json.dump(self._schedule, fp, indent=2, cls=ScheduleEncoder)
 
         with open('{}.schedule.xml'.format(prefix), 'w') as fp:
             fp.write(self.xml())
