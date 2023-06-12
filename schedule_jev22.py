@@ -86,16 +86,16 @@ conferences: List[GenericConference] = [
         },
         options={"track": "Hellarious"},
     ),
-    PretalxConference(
-        url="https://talks.w.icmp.camp/wicmp1",
-        data={
-            "slug": "wicmp1",
-            "name": "Wintergalaktische Club Mate Party",  # (27.–30.)
-            "location": "Erlangen, Bits'n'Bugs + ZAM",
-            "links": ["https://w.icmp.camp"],
-        },
-        options={"track": "Erlangen"},
-    ),
+    # PretalxConference(
+    #     url="https://talks.w.icmp.camp/wicmp1",
+    #     data={
+    #         "slug": "wicmp1",
+    #         "name": "Wintergalaktische Club Mate Party",  # (27.–30.)
+    #         "location": "Erlangen, Bits'n'Bugs + ZAM",
+    #         "links": ["https://w.icmp.camp"],
+    #     },
+    #     options={"track": "Erlangen"},
+    # ),
     WebcalConference(
         url="webcals://ramac.mudbyte.de/remote.php/dav/public-calendars/YTtwyZcXsmZDfSoo/?export",
         data={
@@ -151,18 +151,18 @@ conferences: List[GenericConference] = [
             "id_offsets": -200
         },
     ),
-    PretalxConference(
-        url="https://pretalx.hackwerk.fun/jev-2022",
-        data={
-            "name": "Hackwerk",
-            "location": "Aalen",
-            "description": "Auch wir würden gerne bei der dezentralen Jahresendveranstaltung mitmachen. Hierzu laden wir vom 29.12-31.12. zum netten Zusammensein mit vielen Chaos-Wesen nach Aalen ein. \n\n Wir schauen bei einigen Glühtschunks und Mate zusammen die Streams auf media.ccc.de an, haben aber auch vor selbst Vorträge zu halten und zu Streamen. \n\n Bitte hier ein Ticket klicken (wir verwenden das Ticketsystem, um die Teilnehmerzahl zu wissen)  – für Talk-Einreichungen haben wir ein Pretalx eingerichtet.",
-            "links": [
-                "https://tickets.hackwerk.fun/hackwerk/jev2022/",
-                "https://pretalx.hackwerk.fun/jev-2022/cfp",
-            ],
-        },
-    ),
+    # PretalxConference(
+    #     url="https://pretalx.hackwerk.fun/jev-2022",
+    #     data={
+    #         "name": "Hackwerk",
+    #         "location": "Aalen",
+    #         "description": "Auch wir würden gerne bei der dezentralen Jahresendveranstaltung mitmachen. Hierzu laden wir vom 29.12-31.12. zum netten Zusammensein mit vielen Chaos-Wesen nach Aalen ein. \n\n Wir schauen bei einigen Glühtschunks und Mate zusammen die Streams auf media.ccc.de an, haben aber auch vor selbst Vorträge zu halten und zu Streamen. \n\n Bitte hier ein Ticket klicken (wir verwenden das Ticketsystem, um die Teilnehmerzahl zu wissen)  – für Talk-Einreichungen haben wir ein Pretalx eingerichtet.",
+    #         "links": [
+    #             "https://tickets.hackwerk.fun/hackwerk/jev2022/",
+    #             "https://pretalx.hackwerk.fun/jev-2022/cfp",
+    #         ],
+    #     },
+    # ),
     GenericConference(
         url="https://laborluxeria.github.io/winterchaos2022/schedule.json",
         # https://github.com/laborluxeria/winterchaos2022/tree/main/_sessions – michi
@@ -384,7 +384,7 @@ def main():
         r = streams_schedule.room(guid=stream.guid)
         if r and stream.name and stream.name != r['name']:
             replacements[r['name']] = stream.name
-    streams_schedule.rename_rooms(replacements)
+    # streams_schedule.rename_rooms(replacements)
     streams_schedule.export("channels")
 
     # expose metadata to own file

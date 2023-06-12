@@ -27,7 +27,7 @@ class PretalxConference(GenericConference):
                 self['meta'] = self.meta()
                 self['rooms'] = self.rooms()
             except Exception as e:
-                logger.warning(e)
+                logger.warn(e)
                 pass
 
     def meta(self):
