@@ -132,7 +132,7 @@ class Schedule(dict):
     @classmethod
     def from_url(cls, url):
         log.info("Requesting " + url)
-        schedule_r = requests.get(url, timeout=2)
+        schedule_r = requests.get(url, timeout=20)
 
         if schedule_r.ok is False:
             schedule_r.raise_for_status()

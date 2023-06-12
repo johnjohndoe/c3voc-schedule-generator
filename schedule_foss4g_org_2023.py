@@ -34,7 +34,7 @@ from voc.tools import (
     ensure_folders_exist,
 )
 
-tz = pytz.timezone("Europe/Amsterdam")
+tz = pytz.timezone("Europe/Belgrade")
 local = False
 
 parser = optparse.OptionParser()
@@ -49,10 +49,36 @@ parser.add_option("--debug", action="store_true", dest="debug", default=local)
 log = Logger(__name__)
 options, args = parser.parse_args()
 
-xc3 = "jev22"
+xc3 = "foss4g2023"
 
 # source pad https://lab.nrw/hedgedoc/_hV5kXt9TKuiV0DVsdIwgg
 conferences: List[GenericConference] = [
+    PretalxConference(
+        url="https://talks.osgeo.org/foss4g-2023",
+        data={
+            "name": "FOSS4G General",  # (26.–02.)
+            "location": "Europe/Belgrade",
+            "links": [],
+        },
+    ),
+    PretalxConference(
+        url="https://talks.osgeo.org/foss4g-2023-workshop",
+        data={
+            "name": "FOSS4G Workshops",  # (26.–01.)
+            "location": "Europe/Belgrade",
+            "links": [],
+            "id_offset": 5000,
+        },
+    ),
+    PretalxConference(
+        url="https://talks.osgeo.org/foss4g-2023-academic-track",
+        data={
+            "name": "FOSS4G Academic",  # (28.–01.)
+            "location": "Europe/Belgrade",
+            "links": [],
+            "id_offset": 2000,
+        },
+    ),
 ]
 
 targets = [
@@ -93,13 +119,13 @@ local = ensure_folders_exist(output_dir, secondary_output_dir)
 def main():
     base_schedule = Schedule(
         conference={
-            "acronym": "jev22",
-            "title": "Dezentrale Jahresendveranstaltungen",
-            "start": "2022-12-26",
-            "end": "2022-12-31",
-            "daysCount": 6,
+            "acronym": "foss4g2023",
+            "title": "FOSS4G 2023",
+            "start": "2023-06-26",
+            "end": "2023-07-02",
+            "daysCount": 7,
             "timeslot_duration": "00:15",
-            "time_zone_name": "Europe/Amsterdam",
+            "time_zone_name": "Europe/Belgrade",
         },
         version=str(datetime.now().strftime("%Y-%m-%d %H:%M")),
     )
@@ -197,7 +223,7 @@ def main():
     full_schedule.foreach_event(export_event)
 
     # remove overlapping 'Lötworkshop mit Lötchallenge' 
-    full_schedule.remove_event(guid='bd75d959-dad1-43b4-81fb-33dfb43c10ec')
+    # full_schedule.remove_event(guid='bd75d959-dad1-43b4-81fb-33dfb43c10ec')
 
     # set_validator_filter(["precomputed", "fire-shonks-2022", "hip-berlin-2022"])
     # write all events to one big schedule.json/xml
