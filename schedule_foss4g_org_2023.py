@@ -70,15 +70,6 @@ conferences: List[GenericConference] = [
             "id_offset": 5000,
         },
     ),
-    PretalxConference(
-        url="https://talks.osgeo.org/foss4g-2023-academic-track",
-        data={
-            "name": "FOSS4G Academic",  # (28.–01.)
-            "location": "Europe/Belgrade",
-            "links": [],
-            "id_offset": 2000,
-        },
-    ),
 ]
 
 targets = [
